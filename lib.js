@@ -54,7 +54,7 @@ lib.generateTable = function(twoDimensionalArrayOfText) {
 }
 
 lib.generateHyperLink = function(url, text) {
-    return "<a href=\"" + url + "\">" + text + "</a>";
+    return "<a href='"+ url + "'>" + text + "</a>";
 }
 
 lib.generateFormTextField = function(name) {
