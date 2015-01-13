@@ -67,11 +67,22 @@ lib.generateFormTextFieldWithLabel = function(name, label) {
 }
 
 lib.generateDropdownList = function(arrayOfValues, arrayOfText) {
-    return "not yet implemented"
+    var options = "";
+    var count = arrayOfValues.length;
+    if (count != arrayOfText.length) {
+        throw "Invalid dimensions";
+    } else {
+        for (var i = 0; i < count; i++) {
+            options += "<option value=\"" + arrayOfValues[i] + "\">" + arrayOfText[i] + "</option>";
+        }
+    }
+    
+    return "<select>" + options + "</select>";
 }
 
 lib.generateYoutubeVideoEmbeddableFrame = function(width, height, videoId, allowfullscreen) {
-    return "not yet implemented"
+    var allow = allowfullscreen ? " allowfullscreen" : "";
+    return "<iframe width=\"" + width + "\" height=\"" + height + "\" src=\"//www.youtube.com/embed/" + videoId + "\"" + allow + "></iframe>"
 }
 
 module.exports = lib
