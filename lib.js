@@ -55,35 +55,34 @@ lib.generateTable = function(twoDimensionalArrayOfText) {
 }
 
 lib.generateHyperLink = function(url, text) {
-    // Author: Brian Newsom
-    return "<a href='"+ url + "'>" + text + "</a>";
+    return "<a href=\"" + url + "\">" + text + "</a>";
 }
 
 lib.generateFormTextField = function(name) {
-    // Author: Brian Newsom
-    return '<input type="text" name="' + name + '">';
+    return "<input type=\"text\" name=\"" + name + "\">";
 }
 
 lib.generateFormTextFieldWithLabel = function(name, label) {
-    // Author: Brian Newsom
-    return '<label>' + label + '</label> <input type="text" name="' + name + '">';
+    var labelElem = "<label>" + label + "</label>";
+    return labelElem + "<input type=\"text\" name=\"" + name + "\">";
 }
 
 lib.generateDropdownList = function(arrayOfValues, arrayOfText) {
-    // Author: Brian Newsom
-    var outStr = '<select>\n';
-    for (var i = 0 ; i < arrayOfValues.length ; i++){
-        outStr = outStr + '<option value="' + arrayOfValues[i] + '">' + arrayOfText[i] + '</option>\n';
+    var options = "";
+    var count = arrayOfValues.length;
+    if (count != arrayOfText.length) {
+        throw "Invalid dimensions";
+    } else {
+        for (var i = 0; i < count; i++) {
+            options += "<option value=\"" + arrayOfValues[i] + "\">" + arrayOfText[i] + "</option>";
+        }
     }
-    outStr = outStr + '</select>\n';
-    return outStr;
+    return "<select>" + options + "</select>";
 }
 
 lib.generateYoutubeVideoEmbeddableFrame = function(width, height, videoId, allowfullscreen) {
-    // Author: Brian Newsom
-    var fs = '';
-    (allowfullscreen) ? fs = 'allowfullscreen' : fs = '';
-    return '<iframe width="' + width + '" height="' + height + '" src="//www.youtube.com/embed/' + videoId +  '" ' + fs + '></iframe>';
+    var allow = allowfullscreen ? " allowfullscreen" : "";
+    return '<iframe width="' + width + '" height="' + height + '" src="//www.youtube.com/embed/' + videoId +  '"' + allow + '></iframe>';
 }
 
 module.exports = lib
