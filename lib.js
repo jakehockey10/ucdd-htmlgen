@@ -58,15 +58,12 @@ lib.generateHyperLink = function(url, text) {
 }
 
 lib.generateFormTextField = function(name) {
-    return "not yet implemented"
-}
-
-lib.generateFormTextField = function(name) {
-    return "not yet implemented"
+    return "<input type=\"text\" name=\"" + name + "\">";
 }
 
 lib.generateFormTextFieldWithLabel = function(name, label) {
-    return "not yet implemented"
+    var label = "<label>" + label + "</label>";
+    return label + lib.generateFormTextField(name);
 }
 
 lib.generateDropdownList = function(arrayOfValues, arrayOfText) {
